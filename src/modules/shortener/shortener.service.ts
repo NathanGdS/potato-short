@@ -16,9 +16,7 @@ export class ShortenerService {
   ) {}
 
   async create({ url }: CreateShortenerDto) {
-    const schema = z.object({
-      url: z.string().url(),
-    });
+    const schema = z.string().url();
 
     schema.parse(url);
 
