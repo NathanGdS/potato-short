@@ -1,9 +1,11 @@
+import { ShortenerModule } from '@modules/shortener/shortener.module';
 import { Module } from '@nestjs/common';
-import { ShortenerModule } from './shortener/shortener.module';
+import { HttpAdapterHost } from '@nestjs/core';
+import { AllExceptionsFilterService } from 'infra/filters/all-exceptions.filter';
 
 @Module({
-  imports: [ShortenerModule],
+  imports: [ShortenerModule, HttpAdapterHost],
   controllers: [],
-  providers: [],
+  providers: [AllExceptionsFilterService],
 })
 export class AppModule {}

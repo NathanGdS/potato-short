@@ -1,5 +1,5 @@
 import { randomUUID } from 'crypto';
-import { getShortener } from '../../utils/getShortener';
+import { getShortener } from 'utils/getShortener';
 
 export type ShortenerProps = {
   id?: string;
@@ -18,15 +18,18 @@ export class Shortener {
       id: props.id ?? randomUUID(),
       createdAt: new Date(),
       updatedAt: new Date(),
-      accesses: 0,
-      lastAccessDate: null,
-      shouldPassAds: false,
+      accesses: props.accesses ?? 0,
+      lastAccessDate: props.lastAccessDate ?? null,
+      shouldPassAds: props.shouldPassAds ?? false,
       originalUrl: props.originalUrl,
       urlShortened: getShortener(),
     };
   }
 
-  static create(urlToShort: string) {
+  static create(urlToShort: string, fullProps?: ShortenerProps) {
+    if (fullProps) {
+      return new Shortener(fullProps);
+    }
     return new Shortener({
       originalUrl: urlToShort,
     });
