@@ -1,8 +1,13 @@
 export class NestjsProvider {
+  private static instance: NestjsProvider;
   private constructor(private readonly token: symbol) {}
 
-  static create(token: symbol) {
-    return new NestjsProvider(token);
+  static provide(token: symbol) {
+    if (!this.instance) {
+      this.instance = new NestjsProvider(token);
+    }
+
+    return this.instance;
   }
 
   useClass(classToBeUsed: any) {
@@ -12,9 +17,3 @@ export class NestjsProvider {
     };
   }
 }
-
-// export function createSimpleProvider(
-//   token: symbol,
-// ): Provider {
-// ;
-// }

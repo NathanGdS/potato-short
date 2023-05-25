@@ -9,13 +9,9 @@ import { ShortenerService } from './shortener.service';
   controllers: [ShortenerController],
   providers: [
     ShortenerService,
-    NestjsProvider.create(ShortenerRepositoryAlias).useClass(
+    NestjsProvider.provide(ShortenerRepositoryAlias).useClass(
       ShortenerRepositoryInMemory,
     ),
-    // {
-    //   provide: ShortenerRepositoryAlias,
-    //   useClass: ShortenerRepositoryInMemory,
-    // },
   ],
 })
 export class ShortenerModule {}
