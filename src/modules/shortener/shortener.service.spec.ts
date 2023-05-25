@@ -11,7 +11,7 @@ describe('ShortenerService', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         ShortenerService,
-        NestjsProvider.create(ShortenerRepositoryAlias).useClass(
+        NestjsProvider.provide(ShortenerRepositoryAlias).useClass(
           ShortenerRepositoryInMemory,
         ),
       ],
