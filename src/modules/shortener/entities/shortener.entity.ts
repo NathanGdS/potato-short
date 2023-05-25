@@ -1,5 +1,5 @@
+import { getShortener } from '@utils/getShortener';
 import { randomUUID } from 'crypto';
-import { getShortener } from 'utils/getShortener';
 
 export type ShortenerProps = {
   id?: string;

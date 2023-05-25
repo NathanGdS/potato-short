@@ -1,4 +1,4 @@
-import { getFakeUrl } from 'utils/getFakeUrl';
+import { getFakeUrl } from '@utils/getFakeUrl';
 import { Shortener } from './shortener.entity';
 
 describe('Shortener entity', () => {

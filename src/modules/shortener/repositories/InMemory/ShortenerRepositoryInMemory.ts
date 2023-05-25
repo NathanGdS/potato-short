@@ -1,9 +1,9 @@
+import { IShortenerRepository } from '@base/repositories/IShortenerRepository';
 import {
   Shortener,
   ShortenerProps,
 } from '@modules/shortener/entities/shortener.entity';
 import { registerAccessType } from '@modules/shortener/types/shortener.types';
-import { IShortenerRepository } from 'base/repositories/IShortenerRepository';
 
 export class ShortenerRepositoryInMemory implements IShortenerRepository {
   short: ShortenerProps[] = [];

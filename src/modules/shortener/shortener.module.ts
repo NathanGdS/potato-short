@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ShortenerRepositoryAlias } from 'base/repositories/IShortenerRepository';
+import { NestjsProvider } from 'utils/createProvider';
 import { ShortenerRepositoryInMemory } from './repositories/InMemory/ShortenerRepositoryInMemory';
 import { ShortenerController } from './shortener.controller';
 import { ShortenerService } from './shortener.service';
@@ -8,10 +9,13 @@ import { ShortenerService } from './shortener.service';
   controllers: [ShortenerController],
   providers: [
     ShortenerService,
-    {
-      provide: ShortenerRepositoryAlias,
-      useClass: ShortenerRepositoryInMemory,
-    },
+    NestjsProvider.create(ShortenerRepositoryAlias).useClass(
+      ShortenerRepositoryInMemory,
+    ),
+    // {
+    //   provide: ShortenerRepositoryAlias,
+    //   useClass: ShortenerRepositoryInMemory,
+    // },
   ],
 })
 export class ShortenerModule {}

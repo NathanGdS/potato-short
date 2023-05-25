@@ -1,4 +1,7 @@
+import { ShortenerRepositoryAlias } from '@base/repositories/IShortenerRepository';
 import { Test, TestingModule } from '@nestjs/testing';
+import { NestjsProvider } from '@utils/createProvider';
+import { ShortenerRepositoryInMemory } from './repositories/InMemory/ShortenerRepositoryInMemory';
 import { ShortenerService } from './shortener.service';
 
 describe('ShortenerService', () => {
@@ -6,7 +9,12 @@ describe('ShortenerService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [ShortenerService],
+      providers: [
+        ShortenerService,
+        NestjsProvider.create(ShortenerRepositoryAlias).useClass(
+          ShortenerRepositoryInMemory,
+        ),
+      ],
     }).compile();
 
     service = module.get<ShortenerService>(ShortenerService);

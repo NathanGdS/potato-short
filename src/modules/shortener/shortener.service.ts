@@ -1,8 +1,8 @@
-import { Inject, Injectable } from '@nestjs/common';
 import {
   IShortenerRepository,
   ShortenerRepositoryAlias,
-} from 'base/repositories/IShortenerRepository';
+} from '@base/repositories/IShortenerRepository';
+import { Inject, Injectable } from '@nestjs/common';
 import { z } from 'zod';
 import { CreateShortenerDto } from './dto/create-shortener.dto';
 import { Shortener } from './entities/shortener.entity';
