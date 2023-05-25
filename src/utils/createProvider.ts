@@ -3,7 +3,7 @@ export class NestjsProvider {
   private constructor(private readonly token: symbol) {}
 
   static provide(token: symbol) {
-    if (!NestjsProvider.instance) {
+    if (!NestjsProvider.instance || NestjsProvider.instance.token != token) {
       NestjsProvider.instance = new NestjsProvider(token);
     }
 
