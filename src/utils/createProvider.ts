@@ -1,8 +1,8 @@
 export class NestjsProvider {
   private static instance: NestjsProvider;
-  private constructor(private readonly token: symbol) {}
+  private constructor(private readonly token: symbol | string) {}
 
-  static provideTo(token: symbol) {
+  static provideTo(token: symbol | string) {
     if (!NestjsProvider.instance || NestjsProvider.instance.token != token) {
       NestjsProvider.instance = new NestjsProvider(token);
     }
