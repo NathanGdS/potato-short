@@ -3,11 +3,11 @@ export class NestjsProvider {
   private constructor(private readonly token: symbol) {}
 
   static provide(token: symbol) {
-    if (!this.instance) {
-      this.instance = new NestjsProvider(token);
+    if (!NestjsProvider.instance) {
+      NestjsProvider.instance = new NestjsProvider(token);
     }
 
-    return this.instance;
+    return NestjsProvider.instance;
   }
 
   useClass(classToBeUsed: any) {
